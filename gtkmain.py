@@ -70,12 +70,12 @@ class MyWindow(Gtk.Window):
         self.set_default_size(280, 280)
         self.connect("destroy", Gtk.main_quit)
 
-        self.timeout_id = GLib.timeout_add(500, self.on_timeout, None)
+        self.timeout_id = GLib.timeout_add(500, self.on_timeout)
 
     def on_button_clicked(self, widget):
         Gtk.main_quit()
 
-    def on_timeout(self, user_data):
+    def on_timeout(self):
         """
         Update value on the progress bar
         """
@@ -84,11 +84,11 @@ class MyWindow(Gtk.Window):
 
     def update_net_data(self, w):
         self.man.scan()
-        self.update_check = GLib.timeout_add(500, self.check_has_changed, None)
+        self.update_check = GLib.timeout_add(500, self.check_has_changed)
         # ll = Gtk.Label().new('ttt')
         # self.box.pack_end(ll, 0, 0, 0)
 
-    def check_has_changed(self, d):
+    def check_has_changed(self):
         # Activated by update_net_data, checks whether scan has changed network list
         if self.man._net_has_changed():
             self.nets.destroy()
