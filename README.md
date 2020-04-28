@@ -2,8 +2,6 @@
 
 This aims to provide a simple and extenisble applet for IWD.
 
----
-
 # Features
 
 * Showing available networks
